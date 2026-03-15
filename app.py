@@ -52,6 +52,7 @@ class ClipboardApp:
         self.entries = []
         self.logo_img = None
         self.title_logo_img = None
+        self.settings_btn_img = None
 
         self._build_ui()
         self._load_entries()
@@ -117,6 +118,7 @@ class ClipboardApp:
             font=("Consolas", 9, "bold"),
         )
         settings_btn.pack(side="right", padx=2, pady=2)
+        self._apply_settings_button_icon(settings_btn)
 
         close_btn = tk.Button(
             title_bar,
@@ -261,6 +263,19 @@ class ClipboardApp:
             self.title_logo_label.configure(image=self.title_logo_img)
         except Exception:
             self.title_logo_label.configure(text="[]", fg="#00ff41", font=("Consolas", 9, "bold"))
+
+    def _apply_settings_button_icon(self, settings_btn):
+        settings_logo_path = _resource_path(os.path.join("assets", "images", "clipboard_settings_logo.png"))
+        if not os.path.exists(settings_logo_path):
+            return
+
+        try:
+            raw = tk.PhotoImage(file=settings_logo_path)
+            factor = max(1, max(raw.width(), raw.height()) // 18)
+            self.settings_btn_img = raw.subsample(factor, factor) if factor > 1 else raw
+            settings_btn.configure(image=self.settings_btn_img, text="", width=24, height=24)
+        except Exception:
+            pass
 
     def _start_move(self, event):
         self._drag_x = event.x

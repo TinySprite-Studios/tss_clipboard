@@ -14,10 +14,10 @@ Simple Windows clipboard saver app with Fallout-style terminal UI.
 - Persistent storage in `clipboard_entries.json`
 
 ## Install
-1. Download `TSS-Clipboard-Logo.exe`.
+1. Download `TSS_Clippy.exe`.
 2. Put it in any folder (for example `C:\Program Files\TSS Clipboard` or your Desktop).
 3. Double-click the EXE to launch.
-4. Open `SET` and tick `Run on startup` if wanted, then click `SAVE`.
+4. Open `SETTINGS (cog wheel)` and tick `Run on startup` if wanted, then click `SAVE`.
 
 ## Notes
 - No Python install is needed.
@@ -27,6 +27,7 @@ Simple Windows clipboard saver app with Fallout-style terminal UI.
 ## Build EXE (optional)
 ```powershell
 pip install pyinstaller
-pyinstaller --clean --noconsole --onefile --name "TSS-Clipboard-Logo" --icon "assets\images\clipboard_logo.ico" --add-data "assets\images\clipboard_logo.png;assets\images" app.py
+pyinstaller --clean --noconsole --onefile --name "TSS-Clipboard" --icon "assets\images\clipboard_logo.ico" --add-data "assets\images\clipboard_logo.png;assets\images" app.py
 ```
-The executable will be under `dist\TSS-Clipboard-Logo.exe`.
+The executable will be under `dist\TSS_Clippy.exe`.
+

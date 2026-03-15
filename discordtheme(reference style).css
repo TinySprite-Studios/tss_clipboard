@@ -1,0 +1,758 @@
+/**
+ * @name Fallout 4 Terminal
+ * @author Bates
+ * @version 4.0.0
+ * @source https://github.com/B4T3S/Fallout4TerminalTheme
+ * @website https://B4T3S.github.io/Fallout4TerminalTheme
+ * @donate https://www.paypal.com/paypalme/floriancegledi
+ * @patreon https://patreon.com/bates
+ * @description A theme inspired by Fallout 4's terminals!
+ * @authorId 137259132305539072
+ * @invite 6qd3SkP6Ch
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Staatliches&display=swap');
+@import url('https://B4T3S.github.io/Fallout4TerminalTheme/mainRewrite.css');
+/* ^ This is the main Import ^ DO NOT TOUCH. Without this, the theme won't load!!! */
+
+@import url('https://B4T3S.github.io/Fallout4TerminalTheme/css/crtEffect.css');
+/* ^ This is the CRT effect. ^ If you don't like it, remove or comment out this line! */
+
+/* CUSTOMIZE COLORS IN HERE! */
+:root,
+.visual-refresh,
+.visual-refresh.theme-dark {
+  --rgb-highlight: 0, 255, 65; /* Ashfall Terminal Green */
+  --rgb-background: 0, 0, 0; /* Deep CRT black */
+  --rgb-text: 0, 255, 65; /* Main phosphor text */
+  --rgb-close-button: 212, 18, 39; /* The main "close this" or "deny" color */
+  --rgb-online-color: 57, 255, 20; /* The color used in the "online" user status symbol */
+  --rgb-afk-color: 255, 215, 0; /* Radiation Yellow */
+  --rgb-dnd-color: 255, 165, 0; /* Warning Orange */
+  --rgb-streaming-color: 255, 215, 0; /* Branded accent fallback */
+
+  --transition-time: .3s; /* How fast animations added by the theme happen. Default is 0.3 seconds */
+
+  --background-image: radial-gradient(circle at top, rgba(0, 255, 65, 0.12) 0%, rgba(0, 255, 65, 0.04) 22%, rgba(0, 0, 0, 0.98) 62%, rgb(0, 0, 0) 100%);
+  --background-position: center; /* Positions the background image */
+  --background-size: cover; /* Scales the background image */
+  --background-blur: 0px; /* Keep the CRT backdrop sharp */
+  --background-brightness: 100%; /* Changes the background images brightness */
+ 
+  --show-original-title: 0; /* Whether you want to show discords original title (0 means no, 1 means yes) */
+  --show-custom-title: 1; /* Whether you want to show a custom title (0 means no, 1 means yes) */
+  --custom-title-text: "ASHFALL APOCALYPSE RP"; /* The custom text you want to display */
+  --custom-title-font-size: 17px; /* The size in pixels of the custom title text */
+  --custom-title-font-weight: bold; /* The font "weight" of the custom title text. For reference: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */
+  --custom-title-margin-top: 0px; /* The distance from the top of the window to the custom title text */
+  --custom-title-margin-left: 50px; /* The distance from the left side of the window to the custom title text */
+
+  /* Ashfall brand kit tokens */
+  --af-terminal-green: #00ff41;
+  --af-radiation-yellow: #ffd700;
+  --af-danger-red: #ff4242;
+  --af-rust-brown: #8b4513;
+  --af-decay-brown: #654321;
+  --af-faded-gray: #3a3a3a;
+  --af-deep-black: #000000;
+  --af-charcoal-overlay: #1a1a1a;
+
+  /* Settings tokens inspired by Spotify-Discord's variable-driven setup */
+  --af-settings-app-bg: rgba(0, 0, 0, 0.97);
+  --af-settings-sidebar-bg: rgba(6, 14, 6, 0.94);
+  --af-settings-content-bg: rgba(0, 0, 0, 0.94);
+  --af-settings-card-bg: linear-gradient(180deg, rgba(0, 255, 65, 0.045), rgba(26, 26, 26, 0.92));
+  --af-settings-card-alt-bg: rgba(8, 18, 8, 0.92);
+  --af-settings-input-bg: rgba(0, 0, 0, 0.9);
+  --af-settings-border: rgba(0, 255, 65, 0.18);
+  --af-settings-border-strong: rgba(0, 255, 65, 0.3);
+  --af-settings-hover: rgba(0, 255, 65, 0.09);
+  --af-settings-active: rgba(0, 255, 65, 0.14);
+  --af-settings-highlight: rgba(0, 255, 65, 0.18);
+  --af-settings-text: rgb(214, 255, 222);
+  --af-settings-text-muted: rgba(204, 234, 210, 0.76);
+  --af-settings-button-text: #000000;
+  --af-settings-banner: linear-gradient(135deg, rgba(139, 69, 19, 0.96), rgba(101, 67, 33, 0.88) 42%, rgba(0, 255, 65, 0.22));
+  --af-settings-glow: 0 0 20px rgba(0, 255, 65, 0.08);
+  --af-settings-sidebar-width: 300px;
+  --af-settings-list-width: 220px;
+  --af-settings-role-gap: 72px;
+  --af-settings-role-editor-offset: 48px;
+  --af-settings-content-width: min(1180px, calc(100vw - 380px));
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Share Tech Mono", monospace !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+[class*="title"],
+[class*="Title"],
+[class*="header"],
+[class*="Header"] {
+  font-family: "Staatliches", Impact, sans-serif !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:root {
+  --af-glow: 0 0 8px rgba(0, 255, 65, 0.55), 0 0 18px rgba(0, 255, 65, 0.18);
+}
+
+body,
+.visual-refresh,
+.visual-refresh.theme-dark {
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.18);
+}
+
+[class*="title"],
+[class*="Title"],
+[class*="header"],
+[class*="Header"] {
+  text-shadow: var(--af-glow) !important;
+}
+
+.theme-dark,
+.visual-refresh,
+.visual-refresh.theme-dark,
+.layer__960e4,
+.standardSidebarView__23e6b,
+.contentRegion__23e6b,
+.sidebarRegion__23e6b {
+  --background-primary: var(--af-settings-content-bg) !important;
+  --background-secondary: var(--af-settings-sidebar-bg) !important;
+  --background-secondary-alt: var(--af-settings-card-alt-bg) !important;
+  --background-tertiary: var(--af-settings-card-alt-bg) !important;
+  --bg-base-primary: var(--af-settings-content-bg) !important;
+  --bg-base-secondary: var(--af-settings-sidebar-bg) !important;
+  --bg-base-tertiary: var(--af-settings-card-alt-bg) !important;
+  --modal-background: var(--af-settings-content-bg) !important;
+  --modal-footer-background: var(--af-settings-sidebar-bg) !important;
+  --input-background: var(--af-settings-input-bg) !important;
+  --background-modifier-hover: var(--af-settings-hover) !important;
+  --background-modifier-selected: var(--af-settings-active) !important;
+  --background-modifier-active: var(--af-settings-highlight) !important;
+  --text-normal: var(--af-settings-text) !important;
+  --text-muted: var(--af-settings-text-muted) !important;
+  --header-primary: var(--af-settings-text) !important;
+  --header-secondary: var(--af-settings-text-muted) !important;
+  --channels-default: var(--af-settings-text-muted) !important;
+  --text-link: var(--af-terminal-green) !important;
+  --text-brand: var(--af-terminal-green) !important;
+  --brand-experiment: var(--af-terminal-green) !important;
+}
+
+/* SETTINGS PAGE: token-driven Ashfall reskin */
+.theme-dark [class*="standardSidebarView"],
+.theme-dark [class*="standardSidebarView"] *,
+.visual-refresh [class*="standardSidebarView"],
+.visual-refresh [class*="standardSidebarView"] * {
+  --background-primary: var(--af-settings-content-bg) !important;
+  --background-secondary: var(--af-settings-sidebar-bg) !important;
+  --background-secondary-alt: var(--af-settings-card-alt-bg) !important;
+  --background-tertiary: var(--af-settings-card-alt-bg) !important;
+  --background-accent: var(--af-settings-card-alt-bg) !important;
+  --background-floating: var(--af-settings-card-alt-bg) !important;
+  --bg-base-primary: var(--af-settings-content-bg) !important;
+  --bg-base-secondary: var(--af-settings-sidebar-bg) !important;
+  --bg-base-tertiary: var(--af-settings-card-alt-bg) !important;
+  --bg-surface-overlay: var(--af-settings-card-alt-bg) !important;
+  --modal-background: var(--af-settings-content-bg) !important;
+  --modal-footer-background: var(--af-settings-sidebar-bg) !important;
+  --card-primary-bg: var(--af-settings-card-alt-bg) !important;
+  --card-secondary-bg: rgba(12, 24, 12, 0.92) !important;
+  --input-background: var(--af-settings-input-bg) !important;
+  --channeltextarea-background: var(--af-settings-input-bg) !important;
+  --background-modifier-hover: var(--af-settings-hover) !important;
+  --background-modifier-selected: var(--af-settings-active) !important;
+  --background-modifier-active: var(--af-settings-highlight) !important;
+  --background-modifier-accent: var(--af-settings-border) !important;
+  --interactive-normal: var(--af-settings-text-muted) !important;
+  --interactive-hover: var(--af-terminal-green) !important;
+  --interactive-active: var(--af-settings-text) !important;
+  --interactive-muted: rgba(0, 255, 65, 0.38) !important;
+  --text-normal: var(--af-settings-text) !important;
+  --text-muted: var(--af-settings-text-muted) !important;
+  --text-primary: var(--af-settings-text) !important;
+  --header-primary: var(--af-settings-text) !important;
+  --header-secondary: var(--af-settings-text-muted) !important;
+  --channels-default: var(--af-settings-text-muted) !important;
+  --text-link: var(--af-terminal-green) !important;
+  --text-brand: var(--af-terminal-green) !important;
+  --control-brand-foreground: var(--af-terminal-green) !important;
+  --brand-experiment: var(--af-terminal-green) !important;
+  --brand-500: var(--af-terminal-green) !important;
+  --border-subtle: var(--af-settings-border) !important;
+  --border-faint: rgba(0, 255, 65, 0.1) !important;
+  --button-filled-brand-background: var(--af-terminal-green) !important;
+  --button-filled-brand-background-hover: #52ff86 !important;
+  --button-filled-brand-background-active: #00d443 !important;
+  --button-filled-brand-text: var(--af-settings-button-text) !important;
+  --button-outline-primary-border: var(--af-settings-border-strong) !important;
+  --button-outline-primary-text: var(--af-settings-text) !important;
+}
+
+.theme-dark [class*="standardSidebarView"],
+.theme-dark [class*="contentRegion"],
+.theme-dark [class*="contentRegionScroller"],
+.theme-dark [class*="sidebarRegion"],
+.theme-dark [class*="sidebarRegionScroller"],
+.visual-refresh [class*="standardSidebarView"],
+.visual-refresh [class*="contentRegion"],
+.visual-refresh [class*="contentRegionScroller"],
+.visual-refresh [class*="sidebarRegion"],
+.visual-refresh [class*="sidebarRegionScroller"] {
+  background:
+    linear-gradient(180deg, rgba(0, 255, 65, 0.04) 0%, rgba(0, 0, 0, 0) 12%),
+    var(--af-settings-app-bg) !important;
+}
+
+[class*="standardSidebarView"] [class*="sidebar"],
+[class*="standardSidebarView"] [class*="side"] {
+  background: var(--af-settings-sidebar-bg) !important;
+  border-right: 1px solid var(--af-settings-border-strong) !important;
+  box-shadow: inset -1px 0 0 rgba(0, 255, 65, 0.08) !important;
+  width: var(--af-settings-sidebar-width) !important;
+  min-width: var(--af-settings-sidebar-width) !important;
+}
+
+[class*="standardSidebarView"] [class*="sidebarRegion"] {
+  flex: 0 0 var(--af-settings-sidebar-width) !important;
+  max-width: var(--af-settings-sidebar-width) !important;
+}
+
+[class*="standardSidebarView"] [class*="contentRegion"] {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+[class*="standardSidebarView"] [class*="contentContainer"],
+[class*="standardSidebarView"] [class*="scrollerBase"],
+[class*="standardSidebarView"] [class*="container"] {
+  scrollbar-color: rgba(0, 255, 65, 0.35) rgba(0, 0, 0, 0.6);
+}
+
+[class*="standardSidebarView"] [class*="contentRegionScroller"]::-webkit-scrollbar-thumb,
+[class*="standardSidebarView"] [class*="sidebarRegionScroller"]::-webkit-scrollbar-thumb,
+[class*="standardSidebarView"] [class*="scrollerBase"]::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 255, 65, 0.28) !important;
+  border: 2px solid rgba(0, 0, 0, 0.8) !important;
+}
+
+[class*="standardSidebarView"] [class*="contentRegionScroller"]::-webkit-scrollbar-track,
+[class*="standardSidebarView"] [class*="sidebarRegionScroller"]::-webkit-scrollbar-track,
+[class*="standardSidebarView"] [class*="scrollerBase"]::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.55) !important;
+}
+
+[class*="standardSidebarView"] [class*="contentColumn"],
+[class*="standardSidebarView"] [class*="customColumn"] {
+  width: 100%;
+  max-width: var(--af-settings-content-width);
+  padding-right: 56px;
+  background: linear-gradient(180deg, rgba(0, 255, 65, 0.03), rgba(0, 0, 0, 0)) !important;
+}
+
+[class*="standardSidebarView"] [class*="contentColumn"] [class*="container"],
+[class*="standardSidebarView"] [class*="customColumn"] [class*="container"] {
+  max-width: 100% !important;
+}
+
+[class*="standardSidebarView"] [class*="contentRegionScroller"] > div[style*="max-width"],
+[class*="standardSidebarView"] [class*="contentRegionScroller"] [style*="max-width: 740px"],
+[class*="standardSidebarView"] [class*="contentRegionScroller"] [style*="max-width:740px"] {
+  max-width: var(--af-settings-content-width) !important;
+}
+
+/* Role editor: keep the roles list and editor pane in separate lanes */
+[class*="standardSidebarView"] [class*="contentRegionScroller"] > div:has([class*="rolesList"]) {
+  display: grid !important;
+  grid-template-columns: minmax(200px, var(--af-settings-list-width)) minmax(0, 1fr);
+  column-gap: var(--af-settings-role-gap);
+  align-items: start;
+}
+
+[class*="standardSidebarView"] [class*="contentRegionScroller"] [class*="container"]:has([class*="rolesList"]),
+[class*="standardSidebarView"] [class*="contentRegionScroller"] [class*="root"]:has([class*="rolesList"]),
+[class*="standardSidebarView"] [class*="contentRegionScroller"] [class*="layout"]:has([class*="rolesList"]) {
+  display: grid !important;
+  grid-template-columns: minmax(200px, var(--af-settings-list-width)) minmax(0, 1fr);
+  column-gap: var(--af-settings-role-gap);
+  align-items: start;
+}
+
+[class*="standardSidebarView"] [class*="contentRegionScroller"] [class*="rolesList"],
+[class*="standardSidebarView"] [class*="contentRegionScroller"] [class*="roles"] {
+  min-width: var(--af-settings-list-width) !important;
+  width: var(--af-settings-list-width) !important;
+  max-width: var(--af-settings-list-width) !important;
+  flex: 0 0 var(--af-settings-list-width) !important;
+}
+
+[class*="standardSidebarView"] [class*="contentRegionScroller"] > div:has([class*="rolesList"]) [class*="customColumn"],
+[class*="standardSidebarView"] [class*="contentRegionScroller"] > div:has([class*="rolesList"]) [class*="contentColumn"] {
+  max-width: none !important;
+  width: 100% !important;
+  padding-right: 24px;
+  margin-left: 0 !important;
+  padding-left: var(--af-settings-role-editor-offset) !important;
+}
+
+[class*="standardSidebarView"] [class*="contentRegionScroller"] [class*="rolesList"] ~ [class*="customColumn"],
+[class*="standardSidebarView"] [class*="contentRegionScroller"] [class*="rolesList"] ~ [class*="contentColumn"],
+[class*="standardSidebarView"] [class*="contentRegionScroller"] [class*="roles"] ~ [class*="customColumn"],
+[class*="standardSidebarView"] [class*="contentRegionScroller"] [class*="roles"] ~ [class*="contentColumn"] {
+  margin-left: var(--af-settings-role-gap) !important;
+  width: calc(100% - var(--af-settings-list-width) - var(--af-settings-role-gap)) !important;
+  max-width: calc(100% - var(--af-settings-list-width) - var(--af-settings-role-gap)) !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+}
+
+[class*="standardSidebarView"] [class*="item"] {
+  color: var(--af-settings-text-muted) !important;
+  border-radius: 0 !important;
+  margin-bottom: 4px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+[class*="standardSidebarView"] [class*="item"]:hover {
+  background: rgba(0, 255, 65, 0.08) !important;
+  color: rgb(0, 255, 65) !important;
+  box-shadow: inset 3px 0 0 rgba(0, 255, 65, 0.45);
+}
+
+[class*="standardSidebarView"] [class*="selected"],
+[class*="standardSidebarView"] [class*="item"][aria-selected="true"] {
+  background: rgba(0, 255, 65, 0.12) !important;
+  color: rgb(0, 255, 65) !important;
+  box-shadow:
+    inset 3px 0 0 rgb(0, 255, 65),
+    inset 0 0 0 1px rgba(0, 255, 65, 0.12),
+    0 0 12px rgba(0, 255, 65, 0.08) !important;
+}
+
+[class*="standardSidebarView"] [class*="searchBar"] {
+  background: var(--af-settings-input-bg) !important;
+  border: 1px solid var(--af-settings-border) !important;
+  box-shadow: inset 0 0 0 1px rgba(0, 255, 65, 0.05) !important;
+}
+
+[class*="standardSidebarView"] [class*="searchBar"] svg,
+[class*="standardSidebarView"] [class*="item"] svg,
+[class*="standardSidebarView"] [class*="tabBarItem"] svg {
+  color: rgba(0, 255, 65, 0.72) !important;
+}
+
+[class*="standardSidebarView"] [class*="searchBar"] input,
+[class*="standardSidebarView"] input,
+[class*="standardSidebarView"] textarea {
+  color: rgb(0, 255, 65) !important;
+}
+
+[class*="standardSidebarView"] [class*="searchBar"] input::placeholder,
+[class*="standardSidebarView"] input::placeholder,
+[class*="standardSidebarView"] textarea::placeholder {
+  color: rgba(0, 255, 65, 0.45) !important;
+}
+
+[class*="standardSidebarView"] [class*="header"],
+[class*="standardSidebarView"] [class*="title"],
+[class*="standardSidebarView"] h1,
+[class*="standardSidebarView"] h2,
+[class*="standardSidebarView"] h3,
+[class*="standardSidebarView"] [class*="sectionTitle"] {
+  color: rgb(214, 255, 222) !important;
+  text-shadow: var(--af-glow) !important;
+}
+
+[class*="standardSidebarView"] [class*="tabBarItem"] {
+  color: rgba(203, 255, 216, 0.72) !important;
+  border-bottom-color: transparent !important;
+}
+
+[class*="standardSidebarView"] [class*="tabBarItem"][aria-selected="true"] {
+  color: rgb(0, 255, 65) !important;
+  border-bottom-color: rgb(0, 255, 65) !important;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.35);
+}
+
+[class*="standardSidebarView"] [class*="divider"] {
+  border-color: rgba(0, 255, 65, 0.12) !important;
+}
+
+[class*="standardSidebarView"] [class*="card"],
+[class*="standardSidebarView"] [class*="accountProfileCard"],
+[class*="standardSidebarView"] [class*="profileCard"],
+[class*="standardSidebarView"] [class*="profileBanner"],
+[class*="standardSidebarView"] [class*="fieldList"],
+[class*="standardSidebarView"] [class*="backgroundAccent"],
+[class*="standardSidebarView"] [class*="settingsBanner"],
+[class*="standardSidebarView"] [class*="preview"] {
+  background: var(--af-settings-card-bg) !important;
+  border: 1px solid var(--af-settings-border) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 255, 65, 0.05),
+    var(--af-settings-glow) !important;
+}
+
+[class*="standardSidebarView"] [class*="accountProfileCard"] [class*="banner"] {
+  background: var(--af-settings-banner) !important;
+}
+
+[class*="standardSidebarView"] [class*="field"] {
+  background: rgba(0, 0, 0, 0.34) !important;
+  border: 1px solid rgba(0, 255, 65, 0.08) !important;
+}
+
+[class*="standardSidebarView"] [class*="fieldTitle"],
+[class*="standardSidebarView"] [class*="eyebrow"],
+[class*="standardSidebarView"] [class*="formTitle"] {
+  color: rgb(214, 255, 222) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.2);
+}
+
+[class*="standardSidebarView"] [class*="lookFilled"][class*="colorBrand"],
+[class*="standardSidebarView"] [class*="button"][class*="colorBrand"] {
+  background: linear-gradient(180deg, #52ff86, var(--af-terminal-green)) !important;
+  color: var(--af-settings-button-text) !important;
+  border: 1px solid var(--af-settings-border-strong) !important;
+  box-shadow: 0 0 16px rgba(0, 255, 65, 0.22) !important;
+}
+
+[class*="standardSidebarView"] [class*="lookFilled"][class*="colorBrand"]:hover,
+[class*="standardSidebarView"] [class*="button"][class*="colorBrand"]:hover {
+  background: linear-gradient(180deg, rgb(91, 255, 132), rgb(0, 255, 65)) !important;
+}
+
+[class*="standardSidebarView"] [class*="lookOutlined"],
+[class*="standardSidebarView"] [class*="lookFilled"][class*="colorPrimary"] {
+  background: rgba(0, 0, 0, 0.72) !important;
+  color: var(--af-settings-text) !important;
+  border: 1px solid var(--af-settings-border) !important;
+}
+
+[class*="standardSidebarView"] [class*="lookOutlined"]:hover,
+[class*="standardSidebarView"] [class*="lookFilled"][class*="colorPrimary"]:hover {
+  background: rgba(0, 255, 65, 0.08) !important;
+  border-color: rgba(0, 255, 65, 0.32) !important;
+}
+
+[class*="standardSidebarView"] [role="button"],
+[class*="standardSidebarView"] button {
+  font-family: "Share Tech Mono", monospace !important;
+}
+
+[class*="standardSidebarView"] [class*="closeButton"] {
+  border-color: rgba(255, 165, 0, 0.35) !important;
+  color: rgb(255, 165, 0) !important;
+}
+
+[class*="standardSidebarView"] [class*="closeButton"]:hover {
+  background: rgba(255, 165, 0, 0.12) !important;
+  color: rgb(255, 215, 0) !important;
+  box-shadow: 0 0 12px rgba(255, 165, 0, 0.16) !important;
+}
+
+[class*="standardSidebarView"] [class*="description"],
+[class*="standardSidebarView"] [class*="text-md/normal"],
+[class*="standardSidebarView"] [class*="text-sm/normal"] {
+  color: var(--af-settings-text-muted) !important;
+}
+
+[class*="standardSidebarView"] [class*="radioBar"],
+[class*="standardSidebarView"] [class*="select"],
+[class*="standardSidebarView"] [class*="option"],
+[class*="standardSidebarView"] [class*="control"] {
+  background: rgba(0, 0, 0, 0.82) !important;
+  border-color: rgba(0, 255, 65, 0.16) !important;
+}
+
+[class*="standardSidebarView"] [class*="settingsHeader"],
+[class*="standardSidebarView"] [class*="toolsContainer"],
+[class*="standardSidebarView"] [class*="accountProfileCard"] {
+  background-color: transparent !important;
+}
+
+[class*="standardSidebarView"] [class*="accountProfileCard"] {
+  overflow: hidden;
+}
+
+[class*="standardSidebarView"] [class*="closeButton"] {
+  background: rgba(255, 215, 0, 0.06) !important;
+}
+
+/* Discord's current settings shell, following Spotify's direct-class approach */
+.standardSidebarView__23e6b,
+.visual-refresh .standardSidebarView__23e6b {
+  background: var(--af-settings-app-bg) !important;
+}
+
+.contentRegion__23e6b,
+.visual-refresh .contentRegion__23e6b {
+  margin: 0 !important;
+  background:
+    linear-gradient(180deg, rgba(0, 255, 65, 0.04) 0%, rgba(0, 0, 0, 0) 12%),
+    var(--af-settings-content-bg) !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}
+
+.contentRegionScroller__23e6b,
+.visual-refresh .contentRegionScroller__23e6b,
+.sidebarRegionScroller__23e6b,
+.visual-refresh .sidebarRegionScroller__23e6b {
+  background: transparent !important;
+}
+
+.sidebarRegion__23e6b,
+.visual-refresh .sidebarRegion__23e6b {
+  width: var(--af-settings-sidebar-width) !important;
+  flex: 0 0 var(--af-settings-sidebar-width) !important;
+  max-width: var(--af-settings-sidebar-width) !important;
+  margin: 0 !important;
+  background: var(--af-settings-sidebar-bg) !important;
+  border-right: 1px solid var(--af-settings-border-strong) !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}
+
+.customColumn__23e6b,
+.contentColumnDefault__23e6b,
+.contentColumnWide__23e6b {
+  width: 100% !important;
+  max-width: var(--af-settings-content-width) !important;
+  padding-right: 40px !important;
+}
+
+.customScroller__23e6b > div,
+.contentRegionScroller__23e6b > div {
+  max-width: var(--af-settings-content-width) !important;
+  width: 100% !important;
+}
+
+.content_e9e3ed,
+.contentHeader_e9e3ed {
+  background:
+    linear-gradient(180deg, rgba(0, 255, 65, 0.03), rgba(0, 0, 0, 0)),
+    var(--af-settings-card-alt-bg) !important;
+  border: 1px solid var(--af-settings-border) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 255, 65, 0.05),
+    var(--af-settings-glow) !important;
+}
+
+.side_aa8da2 .item_aa8da2 {
+  border-radius: 0 !important;
+  color: var(--af-settings-text-muted) !important;
+}
+
+.side_aa8da2 .item_aa8da2:hover {
+  background: rgba(0, 255, 65, 0.08) !important;
+  color: var(--af-terminal-green) !important;
+}
+
+.side_aa8da2 .item_aa8da2.selected_aa8da2 {
+  background: rgba(0, 255, 65, 0.12) !important;
+  color: var(--af-terminal-green) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(0, 255, 65, 0.95),
+    inset 0 0 0 1px rgba(0, 255, 65, 0.12) !important;
+}
+
+/* Role editor fallback using the current settings wrappers */
+.customScroller__23e6b > div:has([class*="roles"]):has([class*="customColumn"]),
+.customScroller__23e6b > div:has([class*="roles"]):has([class*="contentColumn"]),
+.contentRegionScroller__23e6b > div:has([class*="roles"]):has([class*="customColumn"]),
+.contentRegionScroller__23e6b > div:has([class*="roles"]):has([class*="contentColumn"]) {
+  display: grid !important;
+  grid-template-columns: minmax(220px, var(--af-settings-list-width)) minmax(0, 1fr) !important;
+  column-gap: var(--af-settings-role-gap) !important;
+  align-items: start !important;
+  max-width: calc(var(--af-settings-content-width) + var(--af-settings-list-width) + var(--af-settings-role-gap)) !important;
+}
+
+.customScroller__23e6b > div:has([class*="roles"]):has([class*="customColumn"]) [class*="roles"],
+.customScroller__23e6b > div:has([class*="roles"]):has([class*="customColumn"]) [class*="rolesList"],
+.customScroller__23e6b > div:has([class*="roles"]):has([class*="contentColumn"]) [class*="roles"],
+.customScroller__23e6b > div:has([class*="roles"]):has([class*="contentColumn"]) [class*="rolesList"],
+.contentRegionScroller__23e6b > div:has([class*="roles"]):has([class*="customColumn"]) [class*="roles"],
+.contentRegionScroller__23e6b > div:has([class*="roles"]):has([class*="customColumn"]) [class*="rolesList"],
+.contentRegionScroller__23e6b > div:has([class*="roles"]):has([class*="contentColumn"]) [class*="roles"],
+.contentRegionScroller__23e6b > div:has([class*="roles"]):has([class*="contentColumn"]) [class*="rolesList"] {
+  width: var(--af-settings-list-width) !important;
+  min-width: var(--af-settings-list-width) !important;
+  max-width: var(--af-settings-list-width) !important;
+  flex: 0 0 var(--af-settings-list-width) !important;
+}
+
+.customScroller__23e6b > div:has([class*="roles"]):has([class*="customColumn"]) [class*="customColumn"],
+.customScroller__23e6b > div:has([class*="roles"]):has([class*="contentColumn"]) [class*="contentColumn"],
+.contentRegionScroller__23e6b > div:has([class*="roles"]):has([class*="customColumn"]) [class*="customColumn"],
+.contentRegionScroller__23e6b > div:has([class*="roles"]):has([class*="contentColumn"]) [class*="contentColumn"] {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin-left: 0 !important;
+  padding-right: 24px !important;
+  padding-left: var(--af-settings-role-editor-offset) !important;
+}
+
+/* Keep the plain roles list page full-width */
+.customScroller__23e6b > div:has([class*="roles"]):not(:has([class*="customColumn"])) [class*="roles"],
+.customScroller__23e6b > div:has([class*="roles"]):not(:has([class*="contentColumn"])) [class*="rolesList"],
+.contentRegionScroller__23e6b > div:has([class*="roles"]):not(:has([class*="customColumn"])) [class*="roles"],
+.contentRegionScroller__23e6b > div:has([class*="roles"]):not(:has([class*="contentColumn"])) [class*="rolesList"] {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* User settings shell cleanup */
+.layer__960e4:has(.standardSidebarView__23e6b),
+.visual-refresh .layer__960e4:has(.standardSidebarView__23e6b) {
+  background: rgba(0, 0, 0, 0.72) !important;
+}
+
+.standardSidebarView__23e6b {
+  border: 1px solid var(--af-settings-border-strong) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 255, 65, 0.05),
+    0 0 28px rgba(0, 255, 65, 0.08) !important;
+}
+
+.sidebar__23e6b,
+.visual-refresh .sidebar__23e6b {
+  background:
+    linear-gradient(180deg, rgba(0, 255, 65, 0.035), rgba(0, 0, 0, 0)),
+    var(--af-settings-sidebar-bg) !important;
+}
+
+.standardSidebarView__23e6b [class*="searchBar"] {
+  background: var(--af-settings-input-bg) !important;
+  border: 1px solid var(--af-settings-border) !important;
+}
+
+.standardSidebarView__23e6b [class*="closeButton"] {
+  background: rgba(0, 0, 0, 0.45) !important;
+  border-color: rgba(0, 255, 65, 0.24) !important;
+  color: var(--af-settings-text) !important;
+}
+
+/* CONTEXT MENUS / RIGHT-CLICK MENUS */
+[class*="menu"],
+[class*="submenu"],
+[class*="popout"],
+[role="menu"] {
+  background:
+    linear-gradient(180deg, rgba(0, 255, 65, 0.04), rgba(0, 0, 0, 0)),
+    rgba(4, 10, 4, 0.98) !important;
+  border: 1px solid var(--af-settings-border) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 255, 65, 0.05),
+    0 0 22px rgba(0, 255, 65, 0.12) !important;
+  border-radius: 0 !important;
+}
+
+[class*="menu"] [class*="scroller"],
+[class*="submenu"] [class*="scroller"],
+[role="menu"] [class*="scroller"] {
+  background: transparent !important;
+}
+
+[class*="menu"] [class*="item"],
+[class*="submenu"] [class*="item"],
+[role="menu"] [class*="item"],
+[class*="menu"] [role="menuitem"],
+[class*="submenu"] [role="menuitem"],
+[role="menu"] [role="menuitem"] {
+  background: transparent !important;
+  color: var(--af-settings-text-muted) !important;
+  border-radius: 0 !important;
+  font-family: "Share Tech Mono", monospace !important;
+  transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+[class*="menu"] [class*="item"]:hover,
+[class*="submenu"] [class*="item"]:hover,
+[role="menu"] [class*="item"]:hover,
+[class*="menu"] [role="menuitem"]:hover,
+[class*="submenu"] [role="menuitem"]:hover,
+[role="menu"] [role="menuitem"]:hover,
+[class*="menu"] [class*="focused"],
+[class*="submenu"] [class*="focused"],
+[role="menu"] [class*="focused"] {
+  background: rgba(0, 255, 65, 0.1) !important;
+  color: var(--af-terminal-green) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(0, 255, 65, 0.6),
+    inset 0 0 0 1px rgba(0, 255, 65, 0.08) !important;
+}
+
+[class*="menu"] [class*="label"],
+[class*="submenu"] [class*="label"],
+[role="menu"] [class*="label"],
+[class*="menu"] [class*="hint"],
+[class*="submenu"] [class*="hint"],
+[role="menu"] [class*="hint"],
+[class*="menu"] [class*="subtext"],
+[class*="submenu"] [class*="subtext"],
+[role="menu"] [class*="subtext"] {
+  color: var(--af-settings-text-muted) !important;
+}
+
+[class*="menu"] [class*="icon"],
+[class*="submenu"] [class*="icon"],
+[role="menu"] [class*="icon"],
+[class*="menu"] svg,
+[class*="submenu"] svg,
+[role="menu"] svg {
+  color: rgba(0, 255, 65, 0.74) !important;
+}
+
+[class*="menu"] [class*="separator"],
+[class*="submenu"] [class*="separator"],
+[role="menu"] [class*="separator"] {
+  border-color: rgba(0, 255, 65, 0.12) !important;
+}
+
+[class*="menu"] [class*="colorDanger"],
+[class*="submenu"] [class*="colorDanger"],
+[role="menu"] [class*="colorDanger"] {
+  color: #ff9f8d !important;
+}
+
+[class*="menu"] [class*="colorDanger"]:hover,
+[class*="submenu"] [class*="colorDanger"]:hover,
+[role="menu"] [class*="colorDanger"]:hover {
+  background: rgba(255, 66, 66, 0.12) !important;
+  color: var(--af-danger-red) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(255, 66, 66, 0.65),
+    inset 0 0 0 1px rgba(255, 66, 66, 0.08) !important;
+}
+
+[class*="menu"] [class*="colorBrand"],
+[class*="submenu"] [class*="colorBrand"],
+[role="menu"] [class*="colorBrand"] {
+  color: var(--af-terminal-green) !important;
+}
+
+[class*="menu"] [class*="checkbox"],
+[class*="submenu"] [class*="checkbox"],
+[role="menu"] [class*="checkbox"],
+[class*="menu"] [class*="radioSelection"],
+[class*="submenu"] [class*="radioSelection"],
+[role="menu"] [class*="radioSelection"] {
+  color: var(--af-terminal-green) !important;
+}
